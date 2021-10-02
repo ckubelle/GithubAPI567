@@ -1,4 +1,6 @@
 language: python
+env:
+  - GITHUB_TOKEN='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'
 python:
   - "3.5"
 install:
