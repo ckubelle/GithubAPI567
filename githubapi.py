@@ -4,15 +4,12 @@ import os
 
 def printGithubStats(username):
 
-    token = os.environ.get('GITHUB_TOKEN')
+    #token = os.environ.get('GITHUB_TOKEN')
 
     query_url = f"https://api.github.com/users/{username}/repos"
-    params = {
-        "state": "open",
-    }
-    headers = {'Authorization': f'token {token}'}
+
     try:
-        r = requests.get(query_url, headers=headers, params=params)
+        r = requests.get(query_url)
         jsonProfile = r.json()
     except:
         print("Cannot gather list of repos")
@@ -26,8 +23,7 @@ def printGithubStats(username):
 
             query_url = f"https://api.github.com/repos/{username}/{repoName}/commits"
 
-
-            r = requests.get(query_url, headers=headers, params=params)
+            r = requests.get(query_url)
         except:
             print("Cannot access commit history for repo!")
             return []
